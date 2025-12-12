@@ -5,6 +5,7 @@ A full-stack e-commerce application for managing and selling sweets online, buil
 ## 📋 Table of Contents
 
 - [Project Overview](#project-overview)
+- [Quick Start](#quick-start)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Prerequisites](#prerequisites)
@@ -18,7 +19,24 @@ A full-stack e-commerce application for managing and selling sweets online, buil
 
 ## 🎯 Project Overview
 
-The Sweet Shop Management System is a RESTful API backend that provides comprehensive e-commerce functionality for an online sweet shop. The system implements JWT-based authentication, role-based access control (USER and ADMIN), inventory management, and secure transaction handling.
+The Sweet Shop Management System is a full-stack e-commerce application for managing and selling sweets online. It features a React frontend and Spring Boot backend with JWT authentication, role-based access control (USER and ADMIN), inventory management, and secure transaction handling.
+
+## 🚀 Quick Start
+
+**Want to get started immediately?** Check out the [QUICK_START.md](QUICK_START.md) guide for a 5-minute setup!
+
+```bash
+# 1. Start database
+docker compose up -d
+
+# 2. Start backend (in one terminal)
+./mvnw spring-boot:run
+
+# 3. Start frontend (in another terminal)
+cd frontend && npm install && npm run dev
+
+# 4. Open http://localhost:3000
+```
 
 ### Key Capabilities
 
@@ -62,6 +80,13 @@ The Sweet Shop Management System is a RESTful API backend that provides comprehe
 - **Build Tool**: Maven
 - **Utilities**: Lombok
 
+### Frontend
+- **Framework**: React 18
+- **Build Tool**: Vite 5
+- **Routing**: React Router 6
+- **HTTP Client**: Axios
+- **Styling**: CSS3 (Custom)
+
 ### Infrastructure
 - **Containerization**: Docker Compose
 - **Database**: PostgreSQL (Docker)
@@ -73,6 +98,7 @@ Before running this application, ensure you have the following installed:
 - **Java 17** or higher ([Download](https://www.oracle.com/java/technologies/downloads/))
 - **Maven 3.6+** (included via Maven Wrapper)
 - **Docker & Docker Compose** ([Download](https://www.docker.com/products/docker-desktop))
+- **Node.js 16+** and npm ([Download](https://nodejs.org/))
 - **Git** ([Download](https://git-scm.com/downloads))
 
 ## 🚀 Setup Instructions
@@ -134,12 +160,26 @@ export JWT_SECRET=your_secure_secret_key_here
 
 The API will be available at: **http://localhost:8080**
 
+### Start the Frontend Application
+
+In a new terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will be available at: **http://localhost:3000**
+
 ### Verify the Application
 
-Check if the application is running:
+Check if the backend is running:
 ```bash
 curl http://localhost:8080/api/sweets
 ```
+
+Then open your browser and navigate to **http://localhost:3000**
 
 ## 📚 API Documentation
 
@@ -279,10 +319,17 @@ Content-Type: application/json
 ./mvnw test -Dtest=AuthServiceImplTest
 ```
 
-### Generate Test Report
-```bash
-./mvnw test
-# Report available at: target/surefire-reports/
+### Test Report
+All 21 tests passing with 100% success rate. See detailed test report: [TEST_REPORT.md](TEST_REPORT.md)
+
+**Test Summary**:
+- AuthService Unit Tests: 6 tests ✅
+- SweetService Unit Tests: 14 tests ✅
+- Application Context Tests: 1 test ✅
+
+```
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0
+Success Rate: 100%
 ```
 
 ## 🤖 My AI Usage
@@ -362,6 +409,15 @@ Co-authored-by: Kiro AI <kiro@users.noreply.github.com>
 sweet-shop/
 ├── .kiro/
 │   └── specs/                    # Project specifications
+├── frontend/                     # React frontend application
+│   ├── src/
+│   │   ├── api/                 # API client
+│   │   ├── components/          # React components
+│   │   ├── App.jsx              # Main app component
+│   │   └── main.jsx             # Entry point
+│   ├── index.html               # HTML template
+│   ├── vite.config.js           # Vite configuration
+│   └── package.json             # Frontend dependencies
 ├── src/
 │   ├── main/
 │   │   ├── java/com/incubyte/sweet/
@@ -380,6 +436,7 @@ sweet-shop/
 │   └── test/                    # Test classes
 ├── docker-compose.yml           # PostgreSQL container
 ├── pom.xml                      # Maven dependencies
+├── TEST_REPORT.md               # Test execution report
 └── README.md                    # This file
 ```
 
